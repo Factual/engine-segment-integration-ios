@@ -1,0 +1,13 @@
+<%
+  versions_map = eval(File.open('DEPS_VERSION.rb') { |f| f.read })
+%>
+source 'git@github.com:Factual/engine-pods.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, "10.3"
+
+target 'SegmentAnalyticsFactualEngine' do
+  use_frameworks!
+  pod "Analytics", "~> <%= versions_map[:segment_analytics] %>"
+  pod "FactualEngineSDK", "<%= versions_map[:factual_engine] %>"
+end

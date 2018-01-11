@@ -1,0 +1,10 @@
+source 'git@github.com:Factual/engine-pods.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.3'
+
+target 'AnalyticsEngineDemo' do
+  use_frameworks!
+  pod "Analytics", "~> 3.6.0"
+  pod "BButton"
+end
