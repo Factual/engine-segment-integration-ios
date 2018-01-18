@@ -32,4 +32,18 @@ pod repo push factual SegmentAnalyticsFactualEngine.podspec  --allow-warnings --
 
 # Upload binary to Bintray
 
-TBD
+## Upload
+
+e.g.
+
+```
+curl -s -v -T segment-analytics-factual-engine-ios-1.0.0.tar.gz -u <BINTRAY_API_USER>:<BINTRAY_API_KEY> https://api.bintray.com/content/factual/files/segment-analytics-factual-engine/1.0.0/segment-analytics-factual-engine-ios-1.0.0.tar.gz
+```
+
+## Publish
+
+e.g.
+
+```
+curl -X POST -u <BINTRAY_API_USER>:<BINTRAY_API_KEY> https://api.bintray.com/content/factual/files/segment-analytics-factual-engine-ios/1.0.0/publish
+```

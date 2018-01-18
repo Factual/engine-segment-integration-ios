@@ -21,6 +21,7 @@ analytics-engine: analytics-engine-x86 analytics-engine-arm
 	mkdir -p $(LIB_OUTPUT)
 	lipo $(ARM_DIR)/lib*.a $(X86_DIR)/lib*.a -output $(LIB_OUTPUT)/$(ANALYTICS_ENGINE_LIB) -create
 	cp $(ARM_DIR)/$(ANALYTICS_ENGINE_HEADERS) $(LIB_OUTPUT)
+	cp LICENSE.txt $(LIB_OUTPUT)
 
 PROJECT_NAME=SegmentAnalyticsFactualEngine
 BASE_ARGS = -workspace $(PROJECT_NAME).xcworkspace -derivedDataPath $(BUILD_ROOT)
