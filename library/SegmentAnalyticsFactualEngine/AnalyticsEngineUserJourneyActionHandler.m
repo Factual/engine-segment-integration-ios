@@ -3,18 +3,18 @@
  * conditions of the license agreement between you
  * and Factual Inc
  *
- * Copyright © 2017 Factual Inc. All rights reserved.
+ * Copyright © 2017-2018 Factual Inc. All rights reserved.
  */
 
 #import "AnalyticsEngine.h"
 
-@implementation AnalyticsEngineDefaultActionHandler
+@implementation AnalyticsEngineUserJourneyActionHandler
 {
     SEGAnalytics *analytics;
 }
 
 + (NSString *) actionId {
-    return @"factual-segment-default-action-id";
+    return @"factual-segment-user-journey-action-id";
 }
 
 - (id) initForAnalytics:(SEGAnalytics *)analytics {

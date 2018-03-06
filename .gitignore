@@ -3,3 +3,12 @@
 **/*~
 **/*.xcworkspace
 **/xcuserdata
+AnalyticsEngineDemo/EnginePod/**
+AnalyticsEngineDemo/Pods/**
+AnalyticsEngineDemo/Podfile
+AnalyticsEngineDemo/t_*
+library/t_*
+library/SegmentAnalyticsFactualEngine.podspec
+library/Pods/**
+library/Podfile
+library/build/**

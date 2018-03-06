@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B7324D500424642294B06DF /* Pods_SegmentAnalyticsFactualEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B85E9324D6D778C55CD4ECC /* Pods_SegmentAnalyticsFactualEngine.framework */; };
-		BACB55A71F841B250093EB2C /* AnalyticsEngineDefaultActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB55A01F841B250093EB2C /* AnalyticsEngineDefaultActionHandler.m */; };
+		BA7ACC06204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */; };
 		BACB55A91F841B250093EB2C /* AnalyticsEngineUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */; };
 		BACB55AA1F841B250093EB2C /* AnalyticsEngineDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB55A41F841B250093EB2C /* AnalyticsEngineDelegate.m */; };
 		BAD019AC1F841ED80061B9EA /* AnalyticsEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BACB55A21F841B250093EB2C /* AnalyticsEngine.h */; };
@@ -31,8 +31,8 @@
 		4B85E9324D6D778C55CD4ECC /* Pods_SegmentAnalyticsFactualEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SegmentAnalyticsFactualEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1A90471F8468010008A8F0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BA1A90491F84681C0008A8F0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineUserJourneyActionHandler.m; sourceTree = "<group>"; };
 		BAA4BC5B1F841A840063C0F9 /* libSegmentAnalyticsFactualEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSegmentAnalyticsFactualEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BACB55A01F841B250093EB2C /* AnalyticsEngineDefaultActionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineDefaultActionHandler.m; sourceTree = "<group>"; };
 		BACB55A21F841B250093EB2C /* AnalyticsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsEngine.h; sourceTree = "<group>"; };
 		BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineUtil.m; sourceTree = "<group>"; };
 		BACB55A41F841B250093EB2C /* AnalyticsEngineDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineDelegate.m; sourceTree = "<group>"; };
@@ -92,8 +92,8 @@
 		BAA4BC5D1F841A840063C0F9 /* SegmentAnalyticsFactualEngine */ = {
 			isa = PBXGroup;
 			children = (
+				BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */,
 				BACB55A21F841B250093EB2C /* AnalyticsEngine.h */,
-				BACB55A01F841B250093EB2C /* AnalyticsEngineDefaultActionHandler.m */,
 				BACB55A41F841B250093EB2C /* AnalyticsEngineDelegate.m */,
 				BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */,
 			);
@@ -195,9 +195,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA7ACC06204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m in Sources */,
 				BACB55A91F841B250093EB2C /* AnalyticsEngineUtil.m in Sources */,
 				BACB55AA1F841B250093EB2C /* AnalyticsEngineDelegate.m in Sources */,
-				BACB55A71F841B250093EB2C /* AnalyticsEngineDefaultActionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
