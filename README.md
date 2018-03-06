@@ -29,8 +29,8 @@ platform :ios, '10.3'
 
 target 'YourApp' do
   pod 'Analytics', '~> 3.6.0'
-  pod 'FactualEngineSDK", '5.3.0'
-  pod 'SegmentAnalyticsFactualEngine', '1.0.0'
+  pod 'FactualEngineSDK", '6.0.0'
+  pod 'SegmentAnalyticsFactualEngine', '2.0.0'
 end
 ```
 
@@ -45,7 +45,7 @@ Download the library from [Bintray](https://factual.bintray.com/files) and add i
 Include the header file `AnalyticsEngine.h` to your instance of `FactualEngineDelegate` and inside of the `engineDidStartWithInstance` method, add the following line of code:
 
 ```
-[AnalyticsEngineUtil trackAllPlaceVisitsWithEngine:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
+[AnalyticsEngineUtil trackUserJourneyWithEngine:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
 ```
 
 **That's it!**
@@ -69,7 +69,7 @@ In your implementation of `FactualEngineDelegate` (see [Requirements](#requireme
 ### To track the entire user journey
 
 ```
-[AnalyticsEngineUtil trackAllPlaceVisitsWithEngine:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
+[AnalyticsEngineUtil trackUserJourneyWithEngine:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
 ```
 
 This function configures Engine in two ways:
@@ -78,17 +78,16 @@ This function configures Engine in two ways:
 * it registers a Circumstance mapped to this action that detects whenever you are **at** any one
   of the 100+ millon places in Factual's [Global Places](http://www.factual.com/products/global) dataset, at any time
 
-
 ### To track user defined Circumstances only
 
-First register the bundled tracking action handler with Engine:
+First register the user journey action handler with Engine:
 
 ```
-[AnalyticsEngineUtil addDefaultActionHandlerTo:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
+[AnalyticsEngineUtil addUserJourneyActionHandlerTo:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
 ```
 
-Then for programmatically created Circumstances, use `[AnalyticsEngineDefaultActionHandler actionId]` as the action id to map your Circumstance to. For
-user defined Circumstances created in the Engine Garage, map them to a new action id called `factual-segment-default-action-id`.
+Then for programmatically created Circumstances, use `[AnalyticsEngineUserJourneyActionHandler actionId]` as the action id to map your Circumstance to. For
+user defined Circumstances created in the Engine Garage, map them to a new action id called `factual-segment-user-journey-action-id`.
 
 ## Roll your own location tracking strategy
 

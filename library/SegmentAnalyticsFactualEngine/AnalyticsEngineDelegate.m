@@ -3,7 +3,7 @@
  * conditions of the license agreement between you
  * and Factual Inc
  *
- * Copyright © 2017 Factual Inc. All rights reserved.
+ * Copyright © 2017-2018 Factual Inc. All rights reserved.
  */
 
 #import <AdSupport/ASIdentifierManager.h>
@@ -38,10 +38,10 @@ static AnalyticsEngineDelegate *sharedInstance;
     NSLog(@"Engine started.");
 
     if(_autoTrack) {
-        [AnalyticsEngineUtil trackAllPlaceVisitsWithEngine:engine forAnalytics:_analytics];
+        [AnalyticsEngineUtil trackUserJourneyWithEngine:engine forAnalytics:_analytics];
     }
     else {
-        [AnalyticsEngineUtil addDefaultActionHandlerTo:engine forAnalytics:_analytics];
+        [AnalyticsEngineUtil addUserJourneyActionHandlerTo:engine forAnalytics:_analytics];
     }
     
     _engine = engine;
@@ -62,4 +62,9 @@ static AnalyticsEngineDelegate *sharedInstance;
 - (void)engineDidSyncWithGarage {
     NSLog(@"Engine updated configuration.");
 }
+
+- (void)engineDidReportDiagnosticMessage:(nonnull NSString *)diagnosticMessage {
+    NSLog(@"Engine diagnostic message: %@", diagnosticMessage);
+}
+
 @end

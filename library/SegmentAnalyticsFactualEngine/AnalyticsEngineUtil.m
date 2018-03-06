@@ -3,7 +3,7 @@
  * conditions of the license agreement between you
  * and Factual Inc
  *
- * Copyright © 2017 Factual Inc. All rights reserved.
+ * Copyright © 2017-2018 Factual Inc. All rights reserved.
  */
 
 #import <AdSupport/ASIdentifierManager.h>
@@ -11,15 +11,18 @@
 
 @implementation AnalyticsEngineUtil
 
-+ (void) trackAllPlaceVisitsWithEngine:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
-    [self addDefaultActionHandlerTo:engine forAnalytics:analytics];
-    FactualCircumstance *atAnyPlaceCircumstance = [[FactualCircumstance alloc] initWithId:@"factual-segment-default-circ-id" expr:@"(at any-factual-place)" actionId:[AnalyticsEngineDefaultActionHandler actionId]];
-    [engine registerCircumstance:atAnyPlaceCircumstance];
+NSString *USER_JOURNEY_CIRC_ID = @"factual-segment-user-journey-circ-id";
+NSString *USER_JOURNEY_CIRC_EXPR = @"(at any-factual-place)";
+
++ (void) trackUserJourneyWithEngine:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
+    [self addUserJourneyActionHandlerTo:engine forAnalytics:analytics];
+    FactualCircumstance *userJourneyCircumstance = [[FactualCircumstance alloc] initWithId:USER_JOURNEY_CIRC_ID expr:USER_JOURNEY_CIRC_EXPR actionId:[AnalyticsEngineUserJourneyActionHandler actionId]];
+    [engine registerCircumstance:userJourneyCircumstance];
 }
 
-+ (void) addDefaultActionHandlerTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
-    AnalyticsEngineDefaultActionHandler *defaultActionHandler = [[AnalyticsEngineDefaultActionHandler alloc] initForAnalytics:analytics];
-    [engine registerActionWithId:[AnalyticsEngineDefaultActionHandler actionId] listener:defaultActionHandler];
++ (void) addUserJourneyActionHandlerTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
+    AnalyticsEngineUserJourneyActionHandler *userJourneyActionHandler = [[AnalyticsEngineUserJourneyActionHandler alloc] initForAnalytics:analytics];
+    [engine registerActionWithId:[AnalyticsEngineUserJourneyActionHandler actionId] listener:userJourneyActionHandler];
 }
 
 + (void) logPlaceEntered:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
@@ -66,8 +69,11 @@
                                   [factualPlace name], @"place_name",
                                   [[factualPlace toDict] valueForKey:@"threshold_met"], @"confidence",
                                   nil];
-    if([factualPlace chainId]) {
-        [props setValue:[factualPlace chainId] forKey:@"place_chain_id"];
+    if([factualPlace chainId] != nil) {
+        NSString *chainId = [[factualPlace chainId] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if([chainId length] > 0) {
+            [props setValue:[factualPlace chainId] forKey:@"place_chain_id"];
+        }
     }
     if([factualPlace categoryIds]) {
         NSMutableArray<NSString *> *cats = [[NSMutableArray alloc] init];
