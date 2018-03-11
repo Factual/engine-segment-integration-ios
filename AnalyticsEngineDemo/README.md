@@ -37,12 +37,10 @@ the library source code as well as the manually added Engine SDK from your Xcode
 
 ## Set up your keys
 
-Before starting the app, edit `AppDelegate.m` and add your Segment write key and Engine API key to the top:
+Before starting the app, add a `plist` file to the `AnalyticsEngineDemo` folder called `creds.plist` and add the following keys to the dictionary:
 
-```
-NSString *const SEGMENT_WRITE_KEY = @"WRITE KEY GOES HERE";
-NSString *const FACTUAL_ENGINE_API_KEY = @"ENGINE KEY GOES HERE";
-```
+1. `segment_write_key`
+1. `engine_api_key`
 
 ## Sanity check
 
