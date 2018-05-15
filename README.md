@@ -88,7 +88,7 @@ First register the track action handler with Engine:
 * when creating programmatic Circumstances
   * use `[AnalyticsEngineTrackAction actionId]` as the action id to map your Circumstance to
 * when creating Circumstances in the [Engine Garage](https://engine.factual.com/garage)
-  * map them to [this](blob/master/library/SegmentAnalyticsFactualEngine/AnalyticsEngineTrackAction.m#L17) action
+  * map them to [this](library/SegmentAnalyticsFactualEngine/AnalyticsEngineTrackAction.m#L17) action
 
 ### Caveats
 
@@ -98,13 +98,13 @@ First register the track action handler with Engine:
 
 ## Roll your own location tracking strategy
 
-The bundled utility class [AnalyticsEngineUtil](blob/master/library/SegmentAnalyticsFactualEngine/AnalyticsEngine.h)
+The bundled utility class [AnalyticsEngineUtil](library/SegmentAnalyticsFactualEngine/AnalyticsEngine.h)
 provides other methods you can invoke from your own delegates and action handler(s) to fine tune which location events you wish to track and when.
 
 ## Reference implementations of delegates
 
-Easily test this library by starting Engine with the bundled [AnalyticsEngineUserJourneyDelegate](blob/master/library/SegmentAnalyticsFactualEngine/AnalyticsEngineUserJourneyDelegate.m),
-which is a reference implemenation of `UserJourneyDelegate`, and the bundled [AnalyticsEngineDelegate](blob/master/library/SegmentAnalyticsFactualEngine/AnalyticsEngineDelegate.m) which is a reference implementation of `FactualEngineDelegate`.
+Easily test this library by starting Engine with the bundled [AnalyticsEngineUserJourneyDelegate](library/SegmentAnalyticsFactualEngine/AnalyticsEngineUserJourneyDelegate.m),
+which is a reference implemenation of `UserJourneyDelegate`, and the bundled [AnalyticsEngineDelegate](library/SegmentAnalyticsFactualEngine/AnalyticsEngineDelegate.m) which is a reference implementation of `FactualEngineDelegate`.
 
 **Note**: We strongly encourage you to use your own implementations of `UserJourneyDelegate` and `FactualEngineDelegate` in Production to have full control over Engine behavior in addition to invoking Segment's Track API.
 
