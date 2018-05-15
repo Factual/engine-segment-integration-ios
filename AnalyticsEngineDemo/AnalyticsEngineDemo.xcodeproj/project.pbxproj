@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA36BA5C20A22DE200714F1D /* AnalyticsEngineUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36BA5820A22DE200714F1D /* AnalyticsEngineUtil.m */; };
+		BA36BA5D20A22DE200714F1D /* AnalyticsEngineDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36BA5920A22DE200714F1D /* AnalyticsEngineDelegate.m */; };
+		BA36BA6020A22E4800714F1D /* libFactualEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA36BA5F20A22E4800714F1D /* libFactualEngine.a */; };
+		BA36BA6820A2827100714F1D /* AnalyticsEngineUserJourneyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA36BA6720A2827100714F1D /* AnalyticsEngineUserJourneyDelegate.m */; };
 		BA3D8E8A20534169007E3CD8 /* creds.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA3D8E8920534169007E3CD8 /* creds.plist */; };
 		BA3D8E8C20534179007E3CD8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA3D8E8B20534179007E3CD8 /* Info.plist */; };
+		BA78344A20A3B3AA001754C7 /* 90210.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA78344920A3B3AA001754C7 /* 90210.gpx */; };
 		BA7D5D501F7757DF0080481A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5D4F1F7757DF0080481A /* AppDelegate.m */; };
 		BA7D5D531F7757DF0080481A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5D521F7757DF0080481A /* ViewController.m */; };
 		BA7D5D561F7757DF0080481A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5D541F7757DF0080481A /* Main.storyboard */; };
 		BA7D5D581F7757DF0080481A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5D571F7757DF0080481A /* Assets.xcassets */; };
 		BA7D5D5B1F7757DF0080481A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5D591F7757DF0080481A /* LaunchScreen.storyboard */; };
 		BA7D5D5E1F7757DF0080481A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5D5D1F7757DF0080481A /* main.m */; };
+		BA940F5220A9071B00E18BE5 /* AnalyticsEngineTrackAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BA940F5120A9071A00E18BE5 /* AnalyticsEngineTrackAction.m */; };
 		BABD51231F77654200BBFEB8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BABD51221F77654200BBFEB8 /* libz.tbd */; };
 		BABD51251F77655000BBFEB8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BABD51241F77655000BBFEB8 /* libc++.tbd */; };
 		CDB4CA607921885D7337CBD1 /* Pods_AnalyticsEngineDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302D1BCB01B305CEBE862FCF /* Pods_AnalyticsEngineDemo.framework */; };
@@ -40,8 +46,15 @@
 /* Begin PBXFileReference section */
 		302D1BCB01B305CEBE862FCF /* Pods_AnalyticsEngineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnalyticsEngineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3358828075F0079EC8C8AABC /* Pods-AnalyticsEngineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalyticsEngineDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnalyticsEngineDemo/Pods-AnalyticsEngineDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BA36BA5820A22DE200714F1D /* AnalyticsEngineUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnalyticsEngineUtil.m; path = ../../library/SegmentAnalyticsFactualEngine/AnalyticsEngineUtil.m; sourceTree = "<group>"; };
+		BA36BA5920A22DE200714F1D /* AnalyticsEngineDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnalyticsEngineDelegate.m; path = ../../library/SegmentAnalyticsFactualEngine/AnalyticsEngineDelegate.m; sourceTree = "<group>"; };
+		BA36BA5A20A22DE200714F1D /* AnalyticsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnalyticsEngine.h; path = ../../library/SegmentAnalyticsFactualEngine/AnalyticsEngine.h; sourceTree = "<group>"; };
+		BA36BA5E20A22E4800714F1D /* FactualEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FactualEngine.h; path = "../../_temp/factual-engine-sdk/FactualEngine.h"; sourceTree = "<group>"; };
+		BA36BA5F20A22E4800714F1D /* libFactualEngine.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFactualEngine.a; path = "../../_temp/factual-engine-sdk/libFactualEngine.a"; sourceTree = "<group>"; };
+		BA36BA6720A2827100714F1D /* AnalyticsEngineUserJourneyDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AnalyticsEngineUserJourneyDelegate.m; path = ../../library/SegmentAnalyticsFactualEngine/AnalyticsEngineUserJourneyDelegate.m; sourceTree = "<group>"; };
 		BA3D8E8920534169007E3CD8 /* creds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = creds.plist; sourceTree = "<group>"; };
 		BA3D8E8B20534179007E3CD8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA78344920A3B3AA001754C7 /* 90210.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = 90210.gpx; path = ../../_temp/90210.gpx; sourceTree = "<group>"; };
 		BA7D5D4B1F7757DF0080481A /* AnalyticsEngineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyticsEngineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5D4E1F7757DF0080481A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA7D5D4F1F7757DF0080481A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +66,7 @@
 		BA7D5D5D1F7757DF0080481A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BA7D5D631F7757DF0080481A /* AnalyticsEngineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnalyticsEngineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5D6E1F7757DF0080481A /* AnalyticsEngineDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnalyticsEngineDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA940F5120A9071A00E18BE5 /* AnalyticsEngineTrackAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnalyticsEngineTrackAction.m; path = ../../library/SegmentAnalyticsFactualEngine/AnalyticsEngineTrackAction.m; sourceTree = "<group>"; };
 		BABD51221F77654200BBFEB8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BABD51241F77655000BBFEB8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E2F1406FC12E6CAFEF3FBCA6 /* Pods-AnalyticsEngineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalyticsEngineDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-AnalyticsEngineDemo/Pods-AnalyticsEngineDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +79,7 @@
 			files = (
 				BABD51251F77655000BBFEB8 /* libc++.tbd in Frameworks */,
 				BABD51231F77654200BBFEB8 /* libz.tbd in Frameworks */,
+				BA36BA6020A22E4800714F1D /* libFactualEngine.a in Frameworks */,
 				CDB4CA607921885D7337CBD1 /* Pods_AnalyticsEngineDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +151,14 @@
 		BAEF8E971F87043900605030 /* FactualSegmentIntegrationDev */ = {
 			isa = PBXGroup;
 			children = (
+				BA940F5120A9071A00E18BE5 /* AnalyticsEngineTrackAction.m */,
+				BA78344920A3B3AA001754C7 /* 90210.gpx */,
+				BA36BA5E20A22E4800714F1D /* FactualEngine.h */,
+				BA36BA5F20A22E4800714F1D /* libFactualEngine.a */,
+				BA36BA5A20A22DE200714F1D /* AnalyticsEngine.h */,
+				BA36BA5920A22DE200714F1D /* AnalyticsEngineDelegate.m */,
+				BA36BA5820A22DE200714F1D /* AnalyticsEngineUtil.m */,
+				BA36BA6720A2827100714F1D /* AnalyticsEngineUserJourneyDelegate.m */,
 			);
 			name = FactualSegmentIntegrationDev;
 			sourceTree = "<group>";
@@ -263,6 +286,7 @@
 				BA7D5D581F7757DF0080481A /* Assets.xcassets in Resources */,
 				BA3D8E8A20534169007E3CD8 /* creds.plist in Resources */,
 				BA3D8E8C20534179007E3CD8 /* Info.plist in Resources */,
+				BA78344A20A3B3AA001754C7 /* 90210.gpx in Resources */,
 				BA7D5D561F7757DF0080481A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,8 +368,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA36BA5C20A22DE200714F1D /* AnalyticsEngineUtil.m in Sources */,
 				BA7D5D531F7757DF0080481A /* ViewController.m in Sources */,
+				BA36BA5D20A22DE200714F1D /* AnalyticsEngineDelegate.m in Sources */,
 				BA7D5D5E1F7757DF0080481A /* main.m in Sources */,
+				BA940F5220A9071B00E18BE5 /* AnalyticsEngineTrackAction.m in Sources */,
+				BA36BA6820A2827100714F1D /* AnalyticsEngineUserJourneyDelegate.m in Sources */,
 				BA7D5D501F7757DF0080481A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +540,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AnalyticsEngineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/opt/repos/alfredp/segment-analytics-factual-engine-ios/_temp/factual-engine-sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.factual.AnalyticsEngineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -527,6 +559,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AnalyticsEngineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/opt/repos/alfredp/segment-analytics-factual-engine-ios/_temp/factual-engine-sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.factual.AnalyticsEngineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

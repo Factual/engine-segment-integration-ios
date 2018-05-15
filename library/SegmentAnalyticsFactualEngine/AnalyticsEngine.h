@@ -10,13 +10,16 @@
 #import "FactualEngine.h"
 
 @interface AnalyticsEngineUtil: NSObject
-+ (void) trackUserJourneyWithEngine:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics;
-+ (void) addUserJourneyActionHandlerTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics;
++ (void) addTrackActionTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics;
++ (void) logPlaceEntered:(FactualCircumstance *)circumstance place:(FactualPlace *)place incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics;
++ (void) logPlaceApproached:(FactualCircumstance *)circumstance place:(FactualPlace *)place incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics;
+
++ (void) trackUserJourneyEvent: (UserJourneyEvent *) userJourneyEvent forAnalytics:(SEGAnalytics *)analytics;
 + (void) logPlaceEntered:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics;
-+ (void) logPlaceNear:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics;
++ (void) logPlaceApproached:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics;
 @end
 
-@interface AnalyticsEngineUserJourneyActionHandler: NSObject<FactualActionDelegate>
+@interface AnalyticsEngineTrackAction: NSObject<FactualActionDelegate>
 + (NSString *) actionId;
 - (id) initForAnalytics:(SEGAnalytics *)analytics;
 @end
@@ -24,5 +27,9 @@
 @interface AnalyticsEngineDelegate: NSObject<FactualEngineDelegate>
 @property FactualEngine *engine;
 + (instancetype) sharedInstance;
-- (id) initForAnalytics:(SEGAnalytics *)analytics withAutoTrack:(BOOL)autoTrack;
+- (id) initForAnalytics:(SEGAnalytics *)analytics;
+@end
+
+@interface AnalyticsEngineUserJourneyDelegate: NSObject<UserJourneyDelegate>
+- (id) initForAnalytics:(SEGAnalytics *)analytics;
 @end

@@ -2,6 +2,10 @@
 
 This library integrates Segment Analytics Track API with Factual Engine SDK.
 
+# Development
+
+Use the `AnalyticsEngineDemo` app to iterate on changes to the library before packaging a distribution.
+
 # Build
 
 ```

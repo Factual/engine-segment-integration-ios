@@ -56,9 +56,15 @@
 }
 
 - (void) startEngine {
+    AnalyticsEngineDelegate *engineDelegate =
+        [[AnalyticsEngineDelegate alloc] initForAnalytics:[SEGAnalytics sharedAnalytics]];
+    
+    AnalyticsEngineUserJourneyDelegate *userJourneyDelegate =
+        [[AnalyticsEngineUserJourneyDelegate alloc] initForAnalytics:[SEGAnalytics sharedAnalytics]];
+    
     [FactualEngine startWithApiKey:FACTUAL_ENGINE_API_KEY
-                          delegate:[[AnalyticsEngineDelegate alloc] initForAnalytics:[SEGAnalytics sharedAnalytics]
-                                                                       withAutoTrack:true]];
+                          delegate:engineDelegate
+               userJourneyDelegate:userJourneyDelegate];
 }
 
 - (NSDictionary *) getCredentials {

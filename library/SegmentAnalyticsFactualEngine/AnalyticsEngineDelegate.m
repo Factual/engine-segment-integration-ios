@@ -11,7 +11,6 @@
 
 @implementation AnalyticsEngineDelegate
 {
-    BOOL _autoTrack;
     SEGAnalytics *_analytics;
 }
 
@@ -21,10 +20,9 @@ static AnalyticsEngineDelegate *sharedInstance;
     return sharedInstance;
 }
 
-- (id) initForAnalytics:(SEGAnalytics *)analytics withAutoTrack:(BOOL)autoTrack {
+- (id) initForAnalytics:(SEGAnalytics *)analytics {
     if (self = [super init]) {
         _analytics = analytics;
-        _autoTrack = autoTrack;
         sharedInstance = self;
     }
     return self;
@@ -36,14 +34,7 @@ static AnalyticsEngineDelegate *sharedInstance;
 
 - (void)engineDidStartWithInstance:(FactualEngine *)engine {
     NSLog(@"Engine started.");
-
-    if(_autoTrack) {
-        [AnalyticsEngineUtil trackUserJourneyWithEngine:engine forAnalytics:_analytics];
-    }
-    else {
-        [AnalyticsEngineUtil addUserJourneyActionHandlerTo:engine forAnalytics:_analytics];
-    }
-    
+    [AnalyticsEngineUtil addTrackActionTo:engine forAnalytics:_analytics];
     _engine = engine;
 }
 
