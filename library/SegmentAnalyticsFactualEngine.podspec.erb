@@ -3,7 +3,7 @@
 %>
 Pod::Spec.new do |s|
   s.name         = "SegmentAnalyticsFactualEngine"
-  s.version      = "<%= begin; File.read('VERSION'); rescue; "0.0.0"; end %>"
+  s.version      = "<%= begin; File.read('VERSION').strip; rescue; "0.0.0"; end %>"
   s.summary      = "Factual Engine Integration for Segment's analytics-ios library."
   s.description  = <<-DESC
                    Segment's Analytics for iOS provides a single API that lets you

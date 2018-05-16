@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7B7324D500424642294B06DF /* Pods_SegmentAnalyticsFactualEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B85E9324D6D778C55CD4ECC /* Pods_SegmentAnalyticsFactualEngine.framework */; };
-		BA7ACC06204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */; };
+		BA3E90FD20ABD49000440C98 /* AnalyticsEngineUserJourneyDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3E90FB20ABD49000440C98 /* AnalyticsEngineUserJourneyDelegate.m */; };
+		BA3E90FE20ABD49000440C98 /* AnalyticsEngineTrackAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BA3E90FC20ABD49000440C98 /* AnalyticsEngineTrackAction.m */; };
 		BACB55A91F841B250093EB2C /* AnalyticsEngineUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */; };
 		BACB55AA1F841B250093EB2C /* AnalyticsEngineDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB55A41F841B250093EB2C /* AnalyticsEngineDelegate.m */; };
 		BAD019AC1F841ED80061B9EA /* AnalyticsEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BACB55A21F841B250093EB2C /* AnalyticsEngine.h */; };
@@ -31,7 +32,8 @@
 		4B85E9324D6D778C55CD4ECC /* Pods_SegmentAnalyticsFactualEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SegmentAnalyticsFactualEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1A90471F8468010008A8F0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		BA1A90491F84681C0008A8F0 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineUserJourneyActionHandler.m; sourceTree = "<group>"; };
+		BA3E90FB20ABD49000440C98 /* AnalyticsEngineUserJourneyDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineUserJourneyDelegate.m; sourceTree = "<group>"; };
+		BA3E90FC20ABD49000440C98 /* AnalyticsEngineTrackAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineTrackAction.m; sourceTree = "<group>"; };
 		BAA4BC5B1F841A840063C0F9 /* libSegmentAnalyticsFactualEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSegmentAnalyticsFactualEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BACB55A21F841B250093EB2C /* AnalyticsEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsEngine.h; sourceTree = "<group>"; };
 		BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyticsEngineUtil.m; sourceTree = "<group>"; };
@@ -92,7 +94,8 @@
 		BAA4BC5D1F841A840063C0F9 /* SegmentAnalyticsFactualEngine */ = {
 			isa = PBXGroup;
 			children = (
-				BA7ACC05204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m */,
+				BA3E90FC20ABD49000440C98 /* AnalyticsEngineTrackAction.m */,
+				BA3E90FB20ABD49000440C98 /* AnalyticsEngineUserJourneyDelegate.m */,
 				BACB55A21F841B250093EB2C /* AnalyticsEngine.h */,
 				BACB55A41F841B250093EB2C /* AnalyticsEngineDelegate.m */,
 				BACB55A31F841B250093EB2C /* AnalyticsEngineUtil.m */,
@@ -111,7 +114,6 @@
 				BAA4BC571F841A840063C0F9 /* Sources */,
 				BAA4BC581F841A840063C0F9 /* Frameworks */,
 				BAA4BC591F841A840063C0F9 /* CopyFiles */,
-				FAEE820BB42EFD6E9F1D5018 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,21 +175,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FAEE820BB42EFD6E9F1D5018 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SegmentAnalyticsFactualEngine/Pods-SegmentAnalyticsFactualEngine-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -195,8 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA7ACC06204F2A7600637013 /* AnalyticsEngineUserJourneyActionHandler.m in Sources */,
+				BA3E90FE20ABD49000440C98 /* AnalyticsEngineTrackAction.m in Sources */,
 				BACB55A91F841B250093EB2C /* AnalyticsEngineUtil.m in Sources */,
+				BA3E90FD20ABD49000440C98 /* AnalyticsEngineUserJourneyDelegate.m in Sources */,
 				BACB55AA1F841B250093EB2C /* AnalyticsEngineDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
