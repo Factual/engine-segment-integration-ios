@@ -94,7 +94,7 @@ First register the track action handler with Engine:
 
 * If you implement both full and selective user journey tracking, there is potential to track the same place visit twice
 * Place visits recorded by selective tracking include the Circumstance id and name, and the rest of the information is the same
-* Unless you okay with duplicate place visits, we recommend using the library to track either full or selective user journey but not both
+* Unless you are okay with duplicate place visits, we recommend using the library to track either full or selective user journey but not both
 
 ## Roll your own location tracking strategy
 
