@@ -8,13 +8,13 @@
 
 #import "AnalyticsEngine.h"
 
-@implementation AnalyticsEngineUserJourneyActionHandler
+@implementation AnalyticsEngineTrackAction
 {
     SEGAnalytics *analytics;
 }
 
 + (NSString *) actionId {
-    return @"factual-segment-user-journey-action-id";
+    return @"factual-engine-segment-analytics-action-id";
 }
 
 - (id) initForAnalytics:(SEGAnalytics *)analytics {
@@ -28,10 +28,10 @@
     for (CircumstanceResponse *circumstanceResponse in circumstanceResponses) {
         NSString *incidentId = [[NSUUID UUID] UUIDString];
         for(FactualPlace *factualPlace in [circumstanceResponse atPlaces]) {
-            [AnalyticsEngineUtil logPlaceEntered:factualPlace incidentId:incidentId forAnalytics:analytics];
+            [AnalyticsEngineUtil logPlaceEntered:[circumstanceResponse circumstance] place:factualPlace incidentId:incidentId forAnalytics:analytics];
         }
         for(FactualPlace *factualPlace in [circumstanceResponse nearPlaces]) {
-            [AnalyticsEngineUtil logPlaceNear:factualPlace incidentId:incidentId forAnalytics:analytics];
+            [AnalyticsEngineUtil logPlaceApproached:[circumstanceResponse circumstance] place:factualPlace incidentId:incidentId forAnalytics:analytics];
         }
     }
 }

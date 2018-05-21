@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3D8E8A20534169007E3CD8 /* creds.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA3D8E8920534169007E3CD8 /* creds.plist */; };
+		BA3D8E8C20534179007E3CD8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA3D8E8B20534179007E3CD8 /* Info.plist */; };
 		BA7D5D501F7757DF0080481A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5D4F1F7757DF0080481A /* AppDelegate.m */; };
 		BA7D5D531F7757DF0080481A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7D5D521F7757DF0080481A /* ViewController.m */; };
 		BA7D5D561F7757DF0080481A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7D5D541F7757DF0080481A /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 /* Begin PBXFileReference section */
 		302D1BCB01B305CEBE862FCF /* Pods_AnalyticsEngineDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnalyticsEngineDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3358828075F0079EC8C8AABC /* Pods-AnalyticsEngineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnalyticsEngineDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnalyticsEngineDemo/Pods-AnalyticsEngineDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BA3D8E8920534169007E3CD8 /* creds.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = creds.plist; sourceTree = "<group>"; };
+		BA3D8E8B20534179007E3CD8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7D5D4B1F7757DF0080481A /* AnalyticsEngineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnalyticsEngineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5D4E1F7757DF0080481A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BA7D5D4F1F7757DF0080481A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -46,7 +50,6 @@
 		BA7D5D551F7757DF0080481A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA7D5D571F7757DF0080481A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA7D5D5A1F7757DF0080481A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BA7D5D5C1F7757DF0080481A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7D5D5D1F7757DF0080481A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BA7D5D631F7757DF0080481A /* AnalyticsEngineDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnalyticsEngineDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7D5D6E1F7757DF0080481A /* AnalyticsEngineDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnalyticsEngineDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +118,8 @@
 		BA7D5D4D1F7757DF0080481A /* AnalyticsEngineDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BA3D8E8B20534179007E3CD8 /* Info.plist */,
+				BA3D8E8920534169007E3CD8 /* creds.plist */,
 				BAEF8E971F87043900605030 /* FactualSegmentIntegrationDev */,
 				BA7D5D4E1F7757DF0080481A /* AppDelegate.h */,
 				BA7D5D4F1F7757DF0080481A /* AppDelegate.m */,
@@ -123,7 +128,6 @@
 				BA7D5D541F7757DF0080481A /* Main.storyboard */,
 				BA7D5D571F7757DF0080481A /* Assets.xcassets */,
 				BA7D5D591F7757DF0080481A /* LaunchScreen.storyboard */,
-				BA7D5D5C1F7757DF0080481A /* Info.plist */,
 				BA7D5D5D1F7757DF0080481A /* main.m */,
 			);
 			path = AnalyticsEngineDemo;
@@ -257,6 +261,8 @@
 			files = (
 				BA7D5D5B1F7757DF0080481A /* LaunchScreen.storyboard in Resources */,
 				BA7D5D581F7757DF0080481A /* Assets.xcassets in Resources */,
+				BA3D8E8A20534169007E3CD8 /* creds.plist in Resources */,
+				BA3D8E8C20534179007E3CD8 /* Info.plist in Resources */,
 				BA7D5D561F7757DF0080481A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +512,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AnalyticsEngineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/opt/repos/alfredp/segment-analytics-factual-engine-ios/_temp/factual-engine-sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.factual.AnalyticsEngineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,6 +531,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AnalyticsEngineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/opt/repos/alfredp/segment-analytics-factual-engine-ios/_temp/factual-engine-sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.factual.AnalyticsEngineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

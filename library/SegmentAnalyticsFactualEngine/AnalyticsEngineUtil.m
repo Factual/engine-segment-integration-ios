@@ -12,32 +12,64 @@
 @implementation AnalyticsEngineUtil
 
 NSString *USER_JOURNEY_CIRC_ID = @"factual-segment-user-journey-circ-id";
-NSString *USER_JOURNEY_CIRC_EXPR = @"(at any-factual-place)";
 
-+ (void) trackUserJourneyWithEngine:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
-    [self addUserJourneyActionHandlerTo:engine forAnalytics:analytics];
-    FactualCircumstance *userJourneyCircumstance = [[FactualCircumstance alloc] initWithId:USER_JOURNEY_CIRC_ID expr:USER_JOURNEY_CIRC_EXPR actionId:[AnalyticsEngineUserJourneyActionHandler actionId]];
-    [engine registerCircumstance:userJourneyCircumstance];
++ (void) addTrackActionTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
+    AnalyticsEngineTrackAction *trackAction = [[AnalyticsEngineTrackAction alloc] initForAnalytics:analytics];
+    [engine registerActionWithId:[AnalyticsEngineTrackAction actionId] listener:trackAction];
 }
 
-+ (void) addUserJourneyActionHandlerTo:(FactualEngine *)engine forAnalytics:(SEGAnalytics *)analytics {
-    AnalyticsEngineUserJourneyActionHandler *userJourneyActionHandler = [[AnalyticsEngineUserJourneyActionHandler alloc] initForAnalytics:analytics];
-    [engine registerActionWithId:[AnalyticsEngineUserJourneyActionHandler actionId] listener:userJourneyActionHandler];
++ (void) logPlaceEntered:(FactualCircumstance *)circumstance place:(FactualPlace *)place incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
+    [self logPlaceVisitFromCircumstance:[circumstance circumstanceId] circumstanceExpression: [circumstance expr] place:place incidentId:incidentId eventName:@"Place Entered" forAnalytics:analytics];
+}
+
++ (void) logPlaceApproached:(FactualCircumstance *)circumstance place:(FactualPlace *)place incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
+    [self logPlaceVisitFromCircumstance:[circumstance circumstanceId] circumstanceExpression: [circumstance expr] place:place incidentId:incidentId eventName:@"Place Approached" forAnalytics:analytics];
+}
+
++ (void) logPlaceVisitFromCircumstance: (NSString *)circId circumstanceExpression: (NSString *)circExpr place:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId eventName:(NSString *) eventName forAnalytics:(SEGAnalytics *)analytics {
+    NSDictionary *eventProperties = @{
+      @"circumstance_id": circId,
+      @"circumstance_expression": circExpr
+    };
+    [self logPlaceVisit:factualPlace incidentId:incidentId eventName:eventName eventProperties:eventProperties forAnalytics:analytics];
+}
+
++ (void) trackUserJourneyEvent:(UserJourneyEvent *) userJourneyEvent forAnalytics:(SEGAnalytics *)analytics {
+    NSString *incidentId = [[NSUUID UUID] UUIDString];
+    
+    NSLog(@"User Journey Event Occurred: %@", [userJourneyEvent toDict]);
+    if ([userJourneyEvent visitUpdate]) {
+        NSLog(@"Visit Update Occurred: %@", [userJourneyEvent toDict]);
+    }	
+    if ([userJourneyEvent activityUpdate]) {
+        NSLog(@"Activity Update Occurred: %@", [userJourneyEvent toDict]);
+    }
+    if ([userJourneyEvent appStateUpdate]) {
+        NSLog(@"App State Update Occurred: %@", [userJourneyEvent toDict]);
+    }
+    if ([userJourneyEvent placeAttachmentUpdate]) {
+        NSLog(@"PA Update Occurred: %@", [userJourneyEvent toDict]);
+        for(FactualPlace *factualPlace in [[userJourneyEvent placeAttachmentUpdate] newlyAttachedPlaces]) {
+            [self logPlaceEntered:factualPlace incidentId:incidentId forAnalytics:analytics];
+        }
+    }
 }
 
 + (void) logPlaceEntered:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
-    [self logPlaceVisit:factualPlace incidentId:incidentId eventName:@"Place Entered" forAnalytics:analytics];
+    [self logPlaceVisit:factualPlace incidentId:incidentId eventName:@"Place Entered" eventProperties:nil forAnalytics:analytics];
 }
 
-+ (void) logPlaceNear:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
-    [self logPlaceVisit:factualPlace incidentId:incidentId eventName:@"Place Near" forAnalytics:analytics];
++ (void) logPlaceApproached:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId forAnalytics:(SEGAnalytics *)analytics {
+    [self logPlaceVisit:factualPlace incidentId:incidentId eventName:@"Place Approached" eventProperties:nil forAnalytics:analytics];
 }
 
-+ (void) logPlaceVisit:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId eventName:(NSString *)eventName forAnalytics:(SEGAnalytics *)analytics {
-    NSDictionary *eventContext = [self segmentEventContext];
-    NSDictionary *eventProps = [self segmentEventPropsForPlace:factualPlace];
-    [eventProps setValue:incidentId forKey:@"incident_id"];
-    [analytics track:eventName properties:eventProps options:eventContext];
++ (void) logPlaceVisit:(FactualPlace *)factualPlace incidentId:(NSString *)incidentId eventName:(NSString *)eventName eventProperties: (NSDictionary *) eventProps forAnalytics:(SEGAnalytics *)analytics {
+    NSMutableDictionary *segmentEventProps = [[NSMutableDictionary alloc] initWithDictionary:[self segmentEventPropsForPlace:factualPlace]];
+    [segmentEventProps setValue:incidentId forKey:@"incident_id"];
+    if(eventProps) {
+        [segmentEventProps addEntriesFromDictionary:eventProps];
+    }
+    [analytics track:eventName properties:segmentEventProps options:[self segmentEventContext]];
 }
 
 + (NSDictionary *) segmentEventContext {

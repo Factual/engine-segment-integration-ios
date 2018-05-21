@@ -12,3 +12,4 @@ library/SegmentAnalyticsFactualEngine.podspec
 library/Pods/**
 library/Podfile
 library/build/**
+AnalyticsEngineDemo/AnalyticsEngineDemo/creds.plist
