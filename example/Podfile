@@ -1,0 +1,14 @@
+source 'git@github.com:Factual/cocoapods.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '9.0'
+
+target 'SegmentEngineExample' do
+  use_frameworks!
+  pod "SegmentEngine"
+
+  target 'SegmentEngineExampleTests' do
+    inherit! :search_paths
+  end
+
+end

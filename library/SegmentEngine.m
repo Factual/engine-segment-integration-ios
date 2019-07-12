@@ -20,6 +20,7 @@ NSString *INCIDENT_ID_KEY = @"incident_id";
 NSString *USER_LATITUDE_KEY = @"user_latitude";
 NSString *USER_LONGITUDE_KEY = @"user_longitude";
 NSString *EVENT_SOURCE_KEY = @"event_source";
+NSString *TAGS_KEY = @"tags";
 
 NSString *AT_PLACE_EVENT_KEY = @"engine_at_";
 NSString *NEAR_PLACE_EVENT_KEY = @"engine_near_";
@@ -45,6 +46,7 @@ withMaxAtPlaceEvents:(int)maxAtPlaceEvents
 withMaxNearPlaceEvents:(int)maxNearPlaceEvents {
   // Circumstance information
   NSString *circumstanceName = [[circumstanceResponse circumstance] name];
+  NSArray<NSString *> *tags = [[circumstanceResponse circumstance] tags];
   CLLocation *userLocation = [circumstanceResponse deviceLocation];
   NSNumber *latitude = [NSNumber numberWithDouble:userLocation.coordinate.latitude];
   NSNumber *longitude = [NSNumber numberWithDouble:userLocation.coordinate.longitude];
@@ -57,6 +59,7 @@ withMaxNearPlaceEvents:(int)maxNearPlaceEvents {
   [properties setValue:incidentId forKey:INCIDENT_ID_KEY];
   [properties setValue:latitude forKey:USER_LATITUDE_KEY];
   [properties setValue:longitude forKey:USER_LONGITUDE_KEY];
+  [properties setValue:tags forKey:TAGS_KEY];
   [properties setValue:SOURCE_NAME forKey:EVENT_SOURCE_KEY];
   
   // Send to Segment
