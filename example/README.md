@@ -8,11 +8,11 @@
 
 ![Dashboard image](./images/apikey.png)
 
-**(2)** Add your Factual Location Engine API Key to [Configuration.m](https://github.com/Factual/engine-airship-integration-ios/blob/master/example/UrbanAirshipEngineExample/Configuration.m#L15)
+**(2)** Add your Factual Location Engine API Key to [Configuration.m](https://github.com/Factual/engine-segment-integration-ios/blob/master/example/SegmentEngineExample/Configuration.m#L15)
 
 **(3)** Locate your Segment API Key for your app from the [Segment Dashboard](https://dashboard.braze.com).  In **Sources** select your app, open the **settings** tab, and select **API Keys**.
 
-**(4)** Add your Braze SDK API Key to [Configuration.m](https://github.com/Factual/engine-airship-integration-ios/blob/master/example/UrbanAirshipEngineExample/Configuration.m#L19)
+**(4)** Add your Braze SDK API Key to [Configuration.m](https://github.com/Factual/engine-segment-integration-ios/blob/master/example/SegmentEngineExample/Configuration.m#L19)
 
 ### Explore
 

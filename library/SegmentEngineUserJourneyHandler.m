@@ -94,7 +94,7 @@ NSString *ATTACHED_PLACE_LOCALITY_KEY = @"locality";
   NSString *region = geographies.region;
   
   // Get duration of span
-  NSNumber *duration = !startTimestampUnavailable && !endTimestampUnavailable ? @(endTimestamp - startTimestamp) : 0;
+  NSNumber *duration = !startTimestampUnavailable && !endTimestampUnavailable ? @(endTimestamp - startTimestamp) : @(0);
   
   // Populate properties data
   NSMutableDictionary *properties = [[NSMutableDictionary alloc] init];
