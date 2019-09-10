@@ -1,162 +1,91 @@
-# Description
+# Factual / Segment SDK for iOS ![Build Status](https://app.bitrise.io/app/f286946ae820c35a/status.svg?token=thRmP11tvTwxO1xG1NKL6g)
 
-This repository contains the code for an integration between Segment Analytics [Track API](https://segment.com/docs/sources/mobile/ios/#track)
-and Factual [Engine iOS SDK](http://developer.factual.com/engine/ios).
+This repository contains the code for an integration between [Factual's Engine SDK](https://www.factual.com/products/engine/) and [Segments's Track API](https://segment.com/docs/sources/mobile/ios/#track). Using this library you can configure Factual's Location Engine SDK to send custom events to Segment to better understand users in the physical world and build personalized experiences to drive user engagement and revenue.
 
-While this is not a Segment [packaged integration](https://segment.com/docs/guides/partners/packaged-integration.md), it's just as simple to use
-and it follows Segment's guidelines for tracking location events.
+### Integration with Segment UI
 
-# Requirements
-
-* an Engine API key
-  * please log in to Factual.com or contact Factual for your key
-* an implementation of a `FactualDelegate`
-  * see our [example](http://developer.factual.com/engine/ios/#implementation) for reference
-* an implementation of `UserJourneyDelegate`
-  * optional per the Engine interface, but required if you wish to use this library to track the entire user journey
-  * see our [example](http://developer.factual.com/engine/ios/#implementation) for reference
-* a Segment write key
-  * see [here](https://segment.com/docs/guides/setup/how-do-i-find-my-write-key/)
-* a configured `SEGAnalytics` instance
-  * as described [here](https://segment.com/docs/sources/mobile/ios/#install-the-sdk)
+see: [engine-segment-integration](https://github.com/Factual/engine-segment-integration)
 
 # Installation
 
-## Cocoapods
+### Cocoapods
 
-```
+```ruby
 source 'https://github.com/Factual/cocoapods.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '10.3'
+platform :ios, '9.0'
 
 target 'YourApp' do
-  pod 'Analytics', '~> 3.6.0'
-  pod 'FactualEngineSDK", '7.0.0'
-  pod 'SegmentAnalyticsFactualEngine', '3.0.0'
+  pod 'SegmentEngine'
 end
 ```
 
-## Manual installation
+### Manual installation
+Download the library from [Bintray](https://factual.bintray.com/files/) and add it to your Xcode project. Note that the Engine SDK and Segment SDK must be added to your Xcode project in order to use the library. Please refer to the [Factual Developer Docs](http://developer.factual.com)
 
-Download the library from [Bintray](https://factual.bintray.com/files) and add it to your Xcode project.
+# Usage
 
-**Note**: You must have Engine SDK already added to your Xcode project in order to use the library.
+### Requirements
 
-# Quickstart
+* Configured and started `Engine` client. [see here](http://developer.factual.com/engine/ios/)
+* Configured `Segment` client. [see here](https://segment.com/docs/sources/mobile/ios/quickstart/)
 
-Include the header file `AnalyticsEngine.h` to your instance of `UserJourneyDelegate` and inside of the `userJourneyEventDidOccur` method, add the following line of code:
+### Tracking Factual Engine Circumstances
 
-```
-[AnalyticsEngineUtil trackUserJourneyEvent:userJourneyEvent forAnalytics:[SEGAnalytics sharedAnalytics]];
-```
+Call the SegmentEngine method for sending a circumstance response to Segment in the `circumstancesMet:` callback in `FactualEngineDelegate`.
 
-**That's it!**
+```objective-c
+- (void)circumstancesMet:(nonnull NSArray<CircumstanceResponse *> *)circumstances {
+  // Max number of "engine_at_" + CIRCUMSTANCE_NAME events that should
+  // be sent per "engine_" + CIRCUMSTANCE_NAME event. Default is set to 10.
+  int maxAtPlaceEvents = 3;
 
-Engine will invoke Segment's Track API for every "Place Entered". You can verify that the app is calling the Track API by using the Segment source debugger.
+  // Max number of "engine_near_" + CIRCUMSTANCE_NAME events that should
+  // be sent per "engine_" + CIRCUMSTANCE_NAME event. Default is set to 20.
+  int maxNearPlaceEvents = 5;
 
-# How to use
-
-We bundle classes that make it easy to call the Track API through user journey events and/or upon Circumstance detection.
-
-Include the following header file to use them:
-
-```
-#import "AnalyticsEngine.h"
-```
-
-## Full user journey tracking
-
-If you have an implemenation of `UserJourneyDelegate` (see [Requirements](#requirements)), simply add the following line of code to the `userJourneyEventDidOccur` method.
-
-```
-[AnalyticsEngineUtil trackUserJourneyEvent:userJourneyEvent forAnalytics:[SEGAnalytics sharedAnalytics]];
+  for (CircumstanceResponse *response in circumstances) {
+    [SegmentEngine pushToSegment:response
+        withMaxAtPlaceEvents:maxAtPlaceEvents
+      withMaxNearPlaceEvents:maxNearPlaceEvents];
+  }
+}
 ```
 
-This function will call Segment's Track API whenever you are **at** any one of the 100+ millon places in Factual's [Global Places](http://www.factual.com/products/global) dataset, at any time.
+### Tracking Factual Engine User Journey Spans
 
-## Selective user journey tracking via Circumstance
+Start tracking User Journey Spans by first adding the `SegmentEngineUserJourneyHandler` delegate on
+`[FactualEngine startWithApiKey:delegate:userJourneyDelegate:]`
 
-In your implementation of `FactualEngineDelegate` (see [Requirements](#requirements)), simply add a few lines of code to the `engineDidStartWithInstance` method.
+```objective-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-First register the track action handler with Engine:
+  ...
 
-```
-[AnalyticsEngineUtil addTrackActionTo:engine forAnalytics:[SEGAnalytics sharedAnalytics]];
-```
+  // Max number of "engine_span_attached_place" events that should be sent per "engine_span_occurred"
+  // default is 20.
+  int maxAttachedPlaceEvents = 10;
+  [FactualEngine startWithApiKey:[Configuration engineApiKey]
+                        delegate:[self engineDelegate]
+             userJourneyDelegate:[[SegmentEngineUserJourneyHandler alloc]
+                                   initWithMaxAttachedPlaceEventsPerEvent:maxAttachedPlaceEvents]];
 
-* when creating programmatic Circumstances
-  * use `[AnalyticsEngineTrackAction actionId]` as the action id to map your Circumstance to
-* when creating Circumstances in the [Engine Garage](https://engine.factual.com/garage)
-  * map them to [this](library/SegmentAnalyticsFactualEngine/AnalyticsEngineTrackAction.m#L17) action
-
-### Caveats
-
-* If you implement both full and selective user journey tracking, there is potential to track the same place visit twice
-* Place visits recorded by selective tracking include the Circumstance id and name, and the rest of the Place information is the same
-* Unless you are okay with duplicate place visits, we recommend using the library to track either full or selective user journey but not both
-
-## Roll your own location tracking strategy
-
-The bundled utility class [AnalyticsEngineUtil](library/SegmentAnalyticsFactualEngine/AnalyticsEngine.h)
-provides other methods you can invoke from your own delegates and action handler(s) to fine tune which location events you wish to track and when.
-
-## Reference implementations of delegates
-
-Easily test this library by starting Engine with the bundled [AnalyticsEngineUserJourneyDelegate](library/SegmentAnalyticsFactualEngine/AnalyticsEngineUserJourneyDelegate.m),
-which is a reference implemenation of `UserJourneyDelegate`, and the bundled [AnalyticsEngineDelegate](library/SegmentAnalyticsFactualEngine/AnalyticsEngineDelegate.m) which is a reference implementation of `FactualEngineDelegate`.
-
-**Note**: We strongly encourage you to use your own implementations of `UserJourneyDelegate` and `FactualEngineDelegate` in Production to have full control over Engine behavior in addition to invoking Segment's Track API.
-
-Example:
-```
-// registers a tracking action with Engine (for use with Circumstances)
-// the tracking action invokes the Segment Track API for any mapped Circumstances
-AnalyticsEngineDelegate *engineDelegate =
-  [[AnalyticsEngineDelegate alloc] initForAnalytics:[SEGAnalytics sharedAnalytics]];
-
-// invokes the Segment Track API for every place visit
-AnalyticsEngineUserJourneyDelegate *userJourneyDelegate =
-  [[AnalyticsEngineUserJourneyDelegate alloc] initForAnalytics:[SEGAnalytics sharedAnalytics]];
-
-[FactualEngine startWithApiKey:@"YOUR ENGINE API KEY"
-                      delegate:engineDelegate
-           userJourneyDelegate:userJourneyDelegate];
+  return YES;
+}
 ```
 
-# License
+Then in the Engine started callback within the FactualEngineDelegate add the line `[SegmentEngine trackUserJourneySpans];`
 
+```objective-c
+- (void)engineDidStartWithInstance:(FactualEngine *)engine {
+  NSLog(@"Engine started.");
+  [SegmentEngine trackUserJourneySpans];
+}
 ```
-WWWWWW||WWWWWW
- W W W||W W W
-      ||
-    ( OO )__________
-     /  |           \
-    /o o|    MIT     \
-    \___/||_||__||_|| *
-         || ||  || ||
-        _||_|| _||_||
-       (__|__|(__|__|
 
-The MIT License (MIT)
+Please refer to the [Factual Developer Docs](http://developer.factual.com) for more information about Engine.
 
-Copyright (c) 2018 Factual, Inc.
+# Example App
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+An example app is included in this repository to demonstrate the usage of this library, see [./example](./example) for documentation and usage instructions.
